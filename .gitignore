@@ -1,9 +1,10 @@
+# MacOS
+.DS_Store
+
+# IntelliJ
 .idea/*
 *.iml
-ignore.js
 
-keys.js
-
-public.main.js
-
-node_modules
+# Compiled output
+*.class
+out/*

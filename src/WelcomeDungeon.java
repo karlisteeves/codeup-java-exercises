@@ -17,7 +17,7 @@ public class WelcomeDungeon {
         //Player Variables
         int health = 100;
         int attackDamage = 30;
-        int numHealthPots = 4; //num of potions our hero starts with
+        int numHealthPots = 3; //num of potions our hero starts with
         int healthPotionHealAmount = 25;
         int healthPotionDropChance = 50; //percentage of an enemy dropping a potion
 
@@ -25,25 +25,29 @@ public class WelcomeDungeon {
 
 
         System.out.println("Welcome to the");
+        System.out.println("     _                                        \n" +
+                "    | |                                       \n" +
+                "  __| |_   _ _ __   __ _  ___  ___  _ __  ___ \n" +
+                " / _` | | | | '_ \\ / _` |/ _ \\/ _ \\| '_ \\/ __|\n" +
+                "| (_| | |_| | | | | (_| |  __/ (_) | | | \\__ \\\n" +
+                " \\__,_|\\__,_|_| |_|\\__, |\\___|\\___/|_| |_|___/\n" +
+                "                    __/ |                     \n" +
+                "                   |___/    ");
+
+        System.out.println("Hero, are you ready to start?");
+
+
+        if (in.nextLine().equalsIgnoreCase("yes")) {
+            System.out.println("What is your name?");
+//
+            String name = in.nextLine();
 
         GAME:
         while (running) {
-//            System.out.println("------------------------------------");
-            System.out.println("     _                                        \n" +
-                    "    | |                                       \n" +
-                    "  __| |_   _ _ __   __ _  ___  ___  _ __  ___ \n" +
-                    " / _` | | | | '_ \\ / _` |/ _ \\/ _ \\| '_ \\/ __|\n" +
-                    "| (_| | |_| | | | | (_| |  __/ (_) | | | \\__ \\\n" +
-                    " \\__,_|\\__,_|_| |_|\\__, |\\___|\\___/|_| |_|___/\n" +
-                    "                    __/ |                     \n" +
-                    "                   |___/    ");
             System.out.println("------------------------------------");
 
-//            System.out.println("Hero, are you ready to start?");
 
-
-//
-//            if (in.nextLine().equals("yes")) {
+//            if (in.nextLine().equalsIgnoreCase("yes")) {
 //                System.out.println("What is your name?");
 ////
 //                String name = in.nextLine();
@@ -53,8 +57,9 @@ public class WelcomeDungeon {
                 System.out.println("\t* " + enemy + " appeared! *\n");
 
 
+                COMBAT:
                 while (enemyHealth > 0) {
-                    System.out.println("\tHP: " + health);
+                    System.out.println("\t" +name+ "'s HP: " + health);
                     System.out.println("\t" + enemy + "'s HP: " + enemyHealth);
                     System.out.println("\n\tWhat would you like to do?");
                     System.out.println("\t1. Attack");
@@ -95,8 +100,9 @@ public class WelcomeDungeon {
                         continue GAME;
 
                     } else if (input.equals("4")) {
-                        System.out.println("\t> You pray for hope, but no one answers. There's no hope in the Dungeon. (Jk, it makes the other monster run away because I can't figure out how to break out of the loop! A new monster appears!");
-                        continue GAME;
+                        System.out.println("\t> You pray for hope, but no one answers. There's no hope in the Dungeon. The " +enemy+ " looks down on you, ready to strike!");
+
+                        continue COMBAT;
 
                     } else {
                         System.out.println("\t Invalid command. Get it together!");
@@ -130,6 +136,9 @@ public class WelcomeDungeon {
                 }
                 if (input.equals("1")) {
                     System.out.println("You continue further into the depths of darkness.");
+//                    continue COMBAT;
+
+
                 } else if (input.equals("2")) {
                     System.out.println("As you exit the dungeon, the sun kisses your face. You made it! You escaped the dungeon!");
                     break;
@@ -141,3 +150,5 @@ public class WelcomeDungeon {
             System.out.println("***********************");
         }
     }
+}
+

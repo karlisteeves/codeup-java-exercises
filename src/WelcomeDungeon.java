@@ -25,12 +25,13 @@ public class WelcomeDungeon {
 
 
         System.out.println("Welcome to the");
-        System.out.println("     _                                        \n" +
+        System.out.println(
+                "     _                                        \n" +
                 "    | |                                       \n" +
-                "  __| |_   _ _ __   __ _  ___  ___  _ __  ___ \n" +
-                " / _` | | | | '_ \\ / _` |/ _ \\/ _ \\| '_ \\/ __|\n" +
-                "| (_| | |_| | | | | (_| |  __/ (_) | | | \\__ \\\n" +
-                " \\__,_|\\__,_|_| |_|\\__, |\\___|\\___/|_| |_|___/\n" +
+                "  __| |_   _ _ __   __ _  ___  ___  _ __   \n" +
+                " / _` | | | | '_ \\ / _` |/ _ \\/ _ \\| '_ \\\n" +
+                "| (_| | |_| | | | | (_| |  __/ (_) | | | \\\n" +
+                " \\__,_|\\__,_|_| |_|\\__, |\\___|\\___/|_| |_|\n" +
                 "                    __/ |                     \n" +
                 "                   |___/    ");
 
@@ -42,15 +43,11 @@ public class WelcomeDungeon {
 //
             String name = in.nextLine();
 
+            System.out.println("Our hero, " +name+ ", decides to brave their way into the dungeon. As they descend into the overwhelming darkness, they hear an echoing sound ricochet off the damp, stone walls. Something's coming...  " );
         GAME:
         while (running) {
             System.out.println("------------------------------------");
 
-
-//            if (in.nextLine().equalsIgnoreCase("yes")) {
-//                System.out.println("What is your name?");
-////
-//                String name = in.nextLine();
 
                 int enemyHealth = rand.nextInt(maxEnemyHealth);
                 String enemy = enemies[rand.nextInt(enemies.length)];
@@ -100,7 +97,7 @@ public class WelcomeDungeon {
                         continue GAME;
 
                     } else if (input.equals("4")) {
-                        System.out.println("\t> You pray for hope, but no one answers. There's no hope in the Dungeon. The " +enemy+ " looks down on you, ready to strike!");
+                        System.out.println("\t> You pray for hope, but no one answers. There's no hope in the Dungeon. The " + enemy + " looks down on you, ready to strike!");
 
                         continue COMBAT;
 
@@ -111,7 +108,7 @@ public class WelcomeDungeon {
                 }
 
                 if (health < 1) {
-                    System.out.println("You limp out of the dungeon, weak from battle.");
+                    System.out.println("You limp out of the dungeon, exhausted from battle.");
                     break;
                 }
                 System.out.println("------------------------------------");

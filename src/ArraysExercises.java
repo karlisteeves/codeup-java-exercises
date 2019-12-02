@@ -30,11 +30,11 @@ public class ArraysExercises {
             System.out.println(person.name);
         }
 
-        personArray = addPerson(personArray, new Person("Lu"));
-
-        for (Person person : personArray) {
-            System.out.println(person.name);
-        }
+//        personArray = addPerson(personArray, new Person("Lu"));
+//
+//        for (Person person : personArray) {
+//            System.out.println(person.name);
+//        }
 
 
     }

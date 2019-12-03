@@ -206,4 +206,3 @@ public class Input {
         return input;
     }
 }
-}

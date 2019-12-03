@@ -6,64 +6,204 @@ public class Input {
 
     private Scanner scanner;
 
-    public Input(){
+    public Input() {
         this.scanner = new Scanner(System.in);
     }
 
-    public String getString(){
-        System.out.println("Please enter a word: ");
+    public String getString() {
+        System.out.println("Enter a string");
         return scanner.nextLine();
     }
 
-    //bonus asking for prompt
-    public String getString(String prompt){
-        if(prompt.isEmpty()){
-            System.out.println("Please enter a word: ");
-        }else {
-            System.out.println(prompt);
-        }
-        return getString();
+    public String getString(String prompt) {
+        System.out.println(prompt);
+        return scanner.nextLine();
     }
 
-    public boolean yesNo(){
-        System.out.println("Please enter y/n");
+    public boolean yesNo() {
+        System.out.println("y/n?");
         String input = scanner.nextLine();
-        if(input.equalsIgnoreCase("y") || input.equalsIgnoreCase("yes")){
-            return true;
-        }else{
-            return false;
-        }
+        return input.equalsIgnoreCase("y") || input.equalsIgnoreCase("yes");
     }
 
-    public int getInt(int min, int max){
-        System.out.println("Give me a number");
-        int number = Integer.parseInt(this.scanner.nextLine());
-        if (number >= min && number <= max) {
-            return number;
-        } else {
-            System.out.println("out of range");
+    public boolean yesNo(String prompt) {
+        System.out.println(prompt);
+        String input = scanner.nextLine();
+        return input.equalsIgnoreCase("y") || input.equalsIgnoreCase("yes");
+    }
+
+    public int getInt(int min, int max) {
+        int input;
+        boolean isValid = false;
+
+        try {
+            System.out.println(String.format("Enter an integer between %d and %d", min, max));
+            do {
+                input = Integer.parseInt(scanner.nextLine());
+
+                if (input > min && input < max) {
+                    isValid = true;
+                } else {
+                    System.out.println("Invalid input");
+                }
+            } while (!isValid);
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input");
             return getInt(min, max);
         }
+
+        return input;
     }
 
-    public int getInt(){
-        System.out.println("Enter a number under 120: ");
-        return Integer.parseInt(this.scanner.nextLine());
+    public int getInt(int min, int max, String prompt) {
+        int input;
+        boolean isValid = false;
+
+        try {
+            System.out.println(prompt);
+            do {
+                input = Integer.parseInt(scanner.nextLine());
+
+                if (input > min && input < max) {
+                    isValid = true;
+                } else {
+                    System.out.println("Invalid input");
+                }
+            } while (!isValid);
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input");
+            return getInt(min, max, prompt);
+        }
+
+        return input;
     }
 
-    public double getDouble(double min, double max){
-        System.out.println("Please enter a decimal number: ");
-        double number = Double.parseDouble(scanner.nextLine());
-        if (number >= min && number <= max){
-            return number;
-        } else {
-            System.out.println("Out of range");
+    public int getInt() {
+        int input;
+
+        try {
+            System.out.println("Enter an integer");
+            input = Integer.parseInt(scanner.nextLine());
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input");
+            return getInt();
+        }
+
+        return input;
+    }
+
+    public int getInt(String prompt) {
+        int input;
+
+        try {
+            System.out.println(prompt);
+            input = Integer.parseInt(scanner.nextLine());
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input");
+            return getInt(prompt);
+        }
+
+        return input;
+    }
+
+    public double getDouble(double min, double max) {
+        double input;
+        boolean isValid = false;
+
+        try {
+            System.out.println(String.format("Enter a double between %.2f and %.2f", min, max));
+            do {
+                input = Double.parseDouble(scanner.nextLine());
+
+                if (input > min && input < max) {
+                    isValid = true;
+                } else {
+                    System.out.println("Invalid input");
+                }
+            } while (!isValid);
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input");
             return getDouble(min, max);
         }
+
+        return input;
     }
 
-    public double getDouble(){
-        System.out.println("please enter a decimal: ");
-        return Double.parseDouble(scanner.nextLine());
+    public double getDouble(double min, double max, String prompt) {
+        double input;
+        boolean isValid = false;
+
+        try {
+            System.out.println(prompt);
+            do {
+                input = Double.parseDouble(scanner.nextLine());
+
+                if (input > min && input < max) {
+                    isValid = true;
+                } else {
+                    System.out.println("Invalid input");
+                }
+            } while (!isValid);
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input");
+            return getDouble(min, max, prompt);
+        }
+
+        return input;
     }
+
+    public double getDouble() {
+        double input;
+
+        try {
+            System.out.println("Enter a double");
+            input = Double.parseDouble(scanner.nextLine());
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input");
+            return getDouble();
+        }
+
+        return input;
+    }
+
+    public double getDouble(String prompt) {
+        double input;
+
+        try {
+            System.out.println(prompt);
+            input = Double.parseDouble(scanner.nextLine());
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input");
+            return getDouble(prompt);
+        }
+
+        return input;
+    }
+
+    public int getBinary() {
+        int input;
+
+        try {
+            System.out.println("Enter a binary number");
+            input = Integer.parseInt(scanner.nextLine(), 2);
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input");
+            return getBinary();
+        }
+        return input;
+    }
+
+    public int getHex() {
+        int input;
+
+        try {
+            System.out.println("Enter a hexadecimal number");
+            input = Integer.parseInt(scanner.nextLine(), 16);
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input");
+            return getHex();
+        }
+        return input;
+    }
+}
 }

@@ -1,7 +1,10 @@
 package movies;
 
 public class Movie {
-
+    public Movie(String name, String category){
+        this.name = name;
+        this.category = category;
+    }
     public String name;
 
     public String getName() {

@@ -3,7 +3,7 @@ package shapes;
 public class Square extends Rectangle {
     public int side;
 
-    Square(int side){
+    public Square(int side){
         super(side, side);
         this.side = side;
     }
